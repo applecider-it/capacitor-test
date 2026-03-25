@@ -14,9 +14,14 @@
       </ion-header>
 
       <div id="container">
+        <ion-button @click="go"> 次へ </ion-button>
+        <ion-button router-link="/second"> 次へ </ion-button>
+
         <ion-input v-model="text" placeholder="入力"></ion-input>
 
-        <ion-button  expand="block" shape="round" @click="addTodo"> 追加 </ion-button>
+        <ion-button expand="block" shape="round" @click="addTodo">
+          追加
+        </ion-button>
 
         <ion-list>
           <ion-item v-for="(todo, index) in todos" :key="index">
@@ -31,7 +36,8 @@
   </ion-page>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
 import {
   IonPage,
   IonHeader,
@@ -44,10 +50,20 @@ import {
   IonItem,
 } from '@ionic/vue';
 
+const router = useRouter();
+
+const go = () => {
+  router.push('/second');
+
+  setTimeout(() => {
+    (document.activeElement as HTMLElement)?.blur();
+  }, 0);
+};
+
 import { ref } from 'vue';
 
-const text = ref('');
-const todos = ref([]);
+const text = ref<string>('');
+const todos = ref<string[]>([]);
 
 const addTodo = () => {
   if (!text.value) return;
@@ -55,7 +71,7 @@ const addTodo = () => {
   text.value = '';
 };
 
-const removeTodo = (index) => {
+const removeTodo = (index: number) => {
   todos.value.splice(index, 1);
 };
 </script>
@@ -63,7 +79,7 @@ const removeTodo = (index) => {
 <style scoped>
 #container {
   text-align: center;
-  
+
   position: absolute;
   left: 0;
   right: 0;
@@ -79,9 +95,9 @@ const removeTodo = (index) => {
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
+
   color: #8c8c8c;
-  
+
   margin: 0;
 }
 
