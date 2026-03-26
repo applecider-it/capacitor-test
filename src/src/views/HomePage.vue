@@ -13,11 +13,11 @@
         </ion-toolbar>
       </ion-header>
 
-      <div id="container">
-        <ion-button @click="go"> 次へ </ion-button>
-        <ion-button router-link="/second"> 次へ </ion-button>
-
-        <ion-input v-model="text" placeholder="入力"></ion-input>
+      <div>
+        <ion-item>
+          <ion-label position="stacked">Todoコメント</ion-label>
+          <ion-input v-model="text" placeholder="入力"></ion-input>
+        </ion-item>
 
         <ion-button expand="block" shape="round" @click="addTodo">
           追加！！
@@ -31,6 +31,13 @@
             </ion-button>
           </ion-item>
         </ion-list>
+
+        <div style="margin-top: 2rem">遷移テスト</div>
+
+        <div>
+          <ion-button @click="go"> 次へ </ion-button>
+          <ion-button router-link="/second"> 次へ </ion-button>
+        </div>
       </div>
     </ion-content>
   </ion-page>
@@ -75,33 +82,3 @@ const removeTodo = (index: number) => {
   todos.value.splice(index, 1);
 };
 </script>
-
-<style scoped>
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 20%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>
