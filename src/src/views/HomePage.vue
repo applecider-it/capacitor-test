@@ -13,11 +13,9 @@
         </ion-toolbar>
       </ion-header>
 
-      <div>
-         <div>
-          <ion-button router-link="/todo"> Todo </ion-button>
-          <ion-button router-link="/development"> development </ion-button>
-        </div>
+      <div class="center">
+        <ion-button router-link="/todo">Todo</ion-button>
+        <ion-button router-link="/development">development</ion-button>
       </div>
     </ion-content>
   </ion-page>
@@ -37,3 +35,15 @@ import {
   IonLabel,
 } from '@ionic/vue';
 </script>
+
+
+<style scoped>
+.center {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+</style>
