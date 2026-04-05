@@ -1,3 +1,35 @@
+<script setup lang="ts">
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonInput,
+  IonButton,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonButtons,
+  IonBackButton,
+} from '@ionic/vue';
+
+import { ref } from 'vue';
+
+const text = ref<string>('');
+const todos = ref<string[]>([]);
+
+const addTodo = () => {
+  if (!text.value) return;
+  todos.value.push(text.value);
+  text.value = '';
+};
+
+const removeTodo = (index: number) => {
+  todos.value.splice(index, 1);
+};
+</script>
+
 <template>
   <ion-page>
     <ion-header :translucent="true">
@@ -38,35 +70,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonInput,
-  IonButton,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonButtons,
-  IonBackButton,
-} from '@ionic/vue';
-
-import { ref } from 'vue';
-
-const text = ref<string>('');
-const todos = ref<string[]>([]);
-
-const addTodo = () => {
-  if (!text.value) return;
-  todos.value.push(text.value);
-  text.value = '';
-};
-
-const removeTodo = (index: number) => {
-  todos.value.splice(index, 1);
-};
-</script>

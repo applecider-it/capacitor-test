@@ -1,42 +1,3 @@
-<template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button defaultHref="/"></ion-back-button>
-        </ion-buttons>
-        <ion-title>開発者向けページ</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content class="ion-padding" :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div>
-        <ion-item>
-          <ion-button @click="login"> ログイン </ion-button>
-          <ion-button @click="logout"> ログアウト </ion-button>
-        </ion-item>
-        <ion-item>
-          <ion-button @click="go"> トップへ(router) </ion-button>
-          <ion-button router-link="/"> トップへ(link) </ion-button>
-        </ion-item>
-        <ion-item>
-          <ion-button @click="takePhoto">
-            カメラ起動
-          </ion-button>
-
-          <img v-if="imageUrl" :src="imageUrl" />
-        </ion-item>
-      </div>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 import {
   IonPage,
@@ -90,3 +51,42 @@ const takePhoto = async () => {
 }
 
 </script>
+
+<template>
+  <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>開発者向けページ</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding" :fullscreen="true">
+      <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large">Blank</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <div>
+        <ion-item>
+          <ion-button @click="login"> ログイン </ion-button>
+          <ion-button @click="logout"> ログアウト </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-button @click="go"> トップへ(router) </ion-button>
+          <ion-button router-link="/"> トップへ(link) </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-button @click="takePhoto">
+            カメラ起動
+          </ion-button>
+
+          <img v-if="imageUrl" :src="imageUrl" />
+        </ion-item>
+      </div>
+    </ion-content>
+  </ion-page>
+</template>

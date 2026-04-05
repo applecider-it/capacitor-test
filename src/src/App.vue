@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { IonApp, IonRouterOutlet, IonToast } from '@ionic/vue';
+
+import { toastMessage } from '@/services/ui/toast'
+
+</script>
+
 <template>
   <ion-app>
     <ion-router-outlet />
@@ -5,10 +12,3 @@
     </ion-toast>
   </ion-app>
 </template>
-
-<script setup lang="ts">
-import { IonApp, IonRouterOutlet, IonToast } from '@ionic/vue';
-
-import { toastMessage } from '@/services/ui/toast'
-
-</script>
