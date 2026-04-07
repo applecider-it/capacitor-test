@@ -13,9 +13,15 @@ Web動作確認: 8101
 nvm use 22
   または、これ以上
 
-ionic serve
 
 ionic serve --no-open
+
+
+windowも開きたい時
+
+ionic serve
+
+
 
 http://localhost:8100
 

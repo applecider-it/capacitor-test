@@ -1,48 +1,12 @@
-<script setup lang="ts">
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonInput,
-  IonButton,
-  IonList,
-  IonItem,
-  IonLabel,
-} from '@ionic/vue';
-</script>
-
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>MyApp</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content class="ion-padding" :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div class="center">
-        <ion-button router-link="/todo">Todo</ion-button>
-        <ion-button router-link="/development">development</ion-button>
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="space-y-10 text-center">
+      <div>
+        <router-link to="/todo" class="app-btn-primary">Todo</router-link>
       </div>
-    </ion-content>
-  </ion-page>
+      <div>
+        <router-link to="/development" class="app-btn-primary">development</router-link>
+      </div>
+    </div>
+  </div>
 </template>
-
-<style scoped>
-.center {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-</style>

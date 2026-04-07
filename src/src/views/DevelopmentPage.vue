@@ -1,18 +1,4 @@
 <script setup lang="ts">
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonInput,
-  IonButton,
-  IonList,
-  IonItem,
-  IonButtons,
-  IonBackButton,
-} from '@ionic/vue';
-
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 
@@ -23,11 +9,6 @@ import { isAuthenticated } from '@/services/auth/auth'
 const imageUrl = ref('')
 
 const router = useRouter();
-
-/** ルーターを使った移動の動作確認 */
-const go = () => {
-  router.push('/');
-};
 
 /** 擬似的なログイン */
 const login = () => {
@@ -52,45 +33,26 @@ const takePhoto = async () => {
 
   imageUrl.value = image.dataUrl!
 }
-
 </script>
 
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button defaultHref="/"></ion-back-button>
-        </ion-buttons>
-        <ion-title>開発者向けページ</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <div class="p-10">
+    <router-link to="/" class="app-btn-primary">戻る</router-link>
 
-    <ion-content class="ion-padding" :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div>
-        <ion-item>
-          <ion-button @click="login"> ログイン </ion-button>
-          <ion-button @click="logout"> ログアウト </ion-button>
-        </ion-item>
-        <ion-item>
-          <ion-button @click="go"> トップへ(router) </ion-button>
-          <ion-button router-link="/"> トップへ(link) </ion-button>
-        </ion-item>
-        <ion-item>
-          <ion-button @click="takePhoto">
-            カメラ起動
-          </ion-button>
-        </ion-item>
-        <ion-item>
-          <img v-if="imageUrl" :src="imageUrl" />
-        </ion-item>
+    <div class="space-y-5 my-10">
+      <div class="space-x-3">
+        <button @click="login" class="app-btn-primary"> ログイン </button>
+        <button @click="logout" class="app-btn-primary"> ログアウト </button>
       </div>
-    </ion-content>
-  </ion-page>
+    </div>
+
+    <div>
+      <button @click="takePhoto" class="app-btn-primary">
+        カメラ起動
+      </button>
+    </div>
+    <div>
+      <img v-if="imageUrl" :src="imageUrl" />
+    </div>
+  </div>
 </template>

@@ -1,20 +1,9 @@
 <script setup lang="ts">
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonInput,
-  IonButton,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonButtons,
-  IonBackButton,
-} from '@ionic/vue';
+import { useRouter } from 'vue-router';
 
 import { ref } from 'vue';
+
+const router = useRouter();
 
 const text = ref<string>('');
 const todos = ref<string[]>([]);
@@ -33,42 +22,27 @@ const removeTodo = (index: number) => {
 </script>
 
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button defaultHref="/"></ion-back-button>
-        </ion-buttons>
-        <ion-title>Todo</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <div class="p-10">
+    <router-link to="/" class="app-btn-primary">戻る</router-link>
 
-    <ion-content class="ion-padding" :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <div class="space-y-5 my-10">
+      <div position="stacked">Todoコメント</div>
+      <input type="text" v-model="text" placeholder="入力" class="app-form-input"></input>
 
-      <div>
-        <ion-item>
-          <ion-label position="stacked">Todoコメント</ion-label>
-          <ion-input v-model="text" placeholder="入力"></ion-input>
-        </ion-item>
+      <button class="app-btn-primary" @click="addTodo">
+        追加
+      </button>
+    </div>
 
-        <ion-button expand="block" shape="round" @click="addTodo">
-          追加
-        </ion-button>
-
-        <ion-list>
-          <ion-item v-for="(todo, index) in todos" :key="index">
-            {{ todo }}
-            <ion-button slot="end" color="danger" @click="removeTodo(index)">
-              削除
-            </ion-button>
-          </ion-item>
-        </ion-list>
-      </div>
-    </ion-content>
-  </ion-page>
+    <ul class="my-10">
+      <li v-for="(todo, index) in todos" :key="index" class="flex items-center justify-between p-4 border-b">
+        <div class="p-3 bg-gray-50">
+          {{ todo }}
+        </div>
+        <button class="app-btn-primary" @click="removeTodo(index)">
+          削除
+        </button>
+      </li>
+    </ul>
+  </div>
 </template>

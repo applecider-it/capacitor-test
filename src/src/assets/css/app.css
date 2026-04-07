@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* ボタン */
+  .app-btn-primary {
+    @apply bg-gradient-to-br from-[#007aff] to-[#00c6ff] text-white px-[18px] py-[10px] rounded-lg cursor-pointer transition duration-200;
+  }
+  .app-btn-primary:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 通常のリンク */
+  .app-link-normal {
+    @apply text-blue-600 hover:underline;
+  }
+
+  /* フォームのテキストボックス */
+  .app-form-input {
+    @apply w-full border rounded p-2;
+  }
+
+  /* カード */
+  .app-card {
+    @apply bg-white p-[1.3rem] rounded-xl;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  /* タイトル */
+  .app-h2 {
+    @apply text-[28px] font-semibold my-8 tracking-[0.08em] text-[#333];
+  }
+
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.2s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(30%);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateX(-30%);
+  opacity: 0;
+}

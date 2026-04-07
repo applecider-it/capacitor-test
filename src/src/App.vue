@@ -1,14 +1,29 @@
 <script setup lang="ts">
-import { IonApp, IonRouterOutlet, IonToast } from '@ionic/vue';
+import AppCommon from "@/services/app/vue/AppCommon.vue"
 
-import { toastMessage } from '@/services/ui/toast'
+// 動作確認
+import { showToast, setIsLoading } from "@/services/ui/message";
+
+/*
+setTimeout(() => {
+    showToast("Test");
+    setIsLoading(true);
+}, 1000);
+ */
+
 
 </script>
 
 <template>
-  <ion-app>
-    <ion-router-outlet />
-    <ion-toast :is-open="!!toastMessage" :message="toastMessage" duration="2000" @didDismiss="toastMessage = ''">
-    </ion-toast>
-  </ion-app>
+  <div>
+    <router-view v-slot="{ Component }">
+      <div class="relative w-full h-full overflow-hidden">
+        <transition name="slide" mode="out-in">
+          <component :is="Component" class="page" />
+        </transition>
+      </div>
+    </router-view>
+
+    <AppCommon />
+  </div>
 </template>
