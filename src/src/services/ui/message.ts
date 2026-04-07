@@ -1,6 +1,6 @@
-/** トースト出力用ReactHook */
+/** トースト出力用Hook */
 let showToastHook: Function;
-/** ローディング画面のオンオフ用ReactHook */
+/** ローディング画面のオンオフ用Hook */
 let setIsLoadingHook: Function;
 
 /** メッセージ管理のセットアップ */
