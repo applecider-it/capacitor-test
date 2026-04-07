@@ -22,7 +22,7 @@ const removeTodo = (index: number) => {
 </script>
 
 <template>
-  <div class="p-10">
+  <div class="p-10 pt-16">
     <router-link to="/" class="app-btn-primary">戻る</router-link>
 
     <div class="space-y-5 my-10">
