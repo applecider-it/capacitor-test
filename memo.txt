@@ -107,7 +107,8 @@ npx cap add ios
   初回だけ
 
 ionic build
-npx cap copy ios
+
+npx cap sync ios
 
 
 npx cap open ios
