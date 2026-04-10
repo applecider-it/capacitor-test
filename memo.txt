@@ -109,6 +109,9 @@ ionic build && npx cap sync
 エミュレーター更新
   初期画面に戻ってしまう
 
+--
+
+時々、Run / Debug Configurations のmodulesが空になることがあるので、その時は、android.appを選択
 
 ----
 

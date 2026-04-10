@@ -71,13 +71,17 @@ const takePhoto = async () => {
       </div>
     </div>
 
+    <div class="my-3">
+      <img src="../assets/images/Block.png" class="w-[50px]" />
+    </div>
+
     <div>
       <button @click="takePhoto" class="app-btn-primary">
         カメラ起動
       </button>
     </div>
     <div>
-      <img v-if="imageUrl" :src="imageUrl" />
+      <img v-if="imageUrl" :src="imageUrl" class="w-[200px]" />
     </div>
   </div>
 </template>
