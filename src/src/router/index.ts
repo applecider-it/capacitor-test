@@ -37,7 +37,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !auth.user()) {
+  if (to.meta.requiresAuth && !auth.checkAuth()) {
     showToast('ログイン必須ページです。', 'alert');
     next('/')
   } else {

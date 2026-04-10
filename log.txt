@@ -24,3 +24,5 @@ npx tailwindcss init -p
 
 npm install @capacitor/ios@8.2.0
 
+npm install @capacitor/preferences
+

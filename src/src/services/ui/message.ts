@@ -11,6 +11,9 @@ export function setupMessage(showToastArg: Function, setIsLoadingArg: Function) 
 
 /** トースト出力 */
 export function showToast(message: string, type: string = "notice") {
+    // ログイン必須ページから開始した時に、認証できないと、showToastHookが設定される前にここにくる
+    if (!showToastHook) return;
+
     showToastHook(message, type);
 }
 

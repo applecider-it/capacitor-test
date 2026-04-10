@@ -4,16 +4,22 @@ import { jsonRequestHeaders, apiUrl } from '@/services/api/http';
 
 import axios from 'axios';
 
-let authUser: Ref<any>;
+import { Preferences } from '@capacitor/preferences';
+
+let currentToken: Ref<any>;
 
 /** 認証のセットアップ */
-function setupAuth() {
-    authUser = ref(null);
+async function setupAuth() {
+    const { value } = await Preferences.get({ key: 'token' });
+
+    console.log('token', value);
+
+    currentToken = ref(value);
 }
 
-/** 認証ユーザーを返す */
-function user() {
-    return authUser.value;
+/** ログインしているかを返す */
+function checkAuth() {
+    return currentToken && currentToken.value !== null;
 }
 
 /** ログイン */
@@ -32,14 +38,12 @@ async function login(email: string, password: string) {
             headers: headers,
         });
 
-        authUser.value = {
-            user: {
-                email
-            },
-            token: response.data.token,
-        };
+        const token = response.data.token;
 
-        console.log(authUser.value);
+        currentToken.value = token;
+        await Preferences.set({ key: 'token', value: token });
+
+        console.log(currentToken.value);
     } catch (error: any) {
         console.log('error', error);
         response = error.response;
@@ -53,13 +57,15 @@ async function login(email: string, password: string) {
 }
 
 /** ログアウト */
-function logout() {
-    authUser.value = null;
+async function logout() {
+    currentToken.value = null;
+
+    await Preferences.remove({ key: 'token' });
 }
 
 export const auth = {
     setupAuth,
-    user,
+    checkAuth,
     login,
     logout,
 }
