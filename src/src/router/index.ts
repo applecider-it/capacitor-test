@@ -4,6 +4,7 @@ import { RouteRecordRaw } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import TodoPage from '@/views/TodoPage.vue';
 import DevelopmentPage from '@/views/DevelopmentPage.vue';
+import AuthPage from '@/views/AuthPage.vue';
 
 import { auth } from '@/services/auth/auth'
 import { showToast } from '@/services/ui/message'
@@ -28,6 +29,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'todo',
     component: TodoPage,
     meta: { requiresAuth: true },
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: AuthPage,
   },
 ];
 
