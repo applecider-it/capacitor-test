@@ -1,39 +1,54 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
 
-import HomePage from '@/views/HomePage.vue';
-import TodoPage from '@/views/TodoPage.vue';
-import DevelopmentPage from '@/views/DevelopmentPage.vue';
-import AuthPage from '@/views/AuthPage.vue';
+import HomePage from "@/views/HomePage.vue";
+import TodoPage from "@/views/TodoPage.vue";
+import DevelopmentPage from "@/views/DevelopmentPage.vue";
+import AuthPage from "@/views/AuthPage.vue";
 
-import { auth } from '@/services/auth/auth'
-import { showToast } from '@/services/ui/message'
+import { auth } from "@/services/auth/auth";
+import { showToast } from "@/services/ui/message";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    redirect: '/home',
+    path: "/",
+    redirect: "/home",
+    meta: {
+      level: 0,
+    },
   },
   {
-    path: '/home',
-    name: 'Home',
+    path: "/home",
+    name: "Home",
     component: HomePage,
+    meta: {
+      level: 0,
+    },
   },
   {
-    path: '/development',
-    name: 'Development',
+    path: "/development",
+    name: "Development",
     component: DevelopmentPage,
+    meta: {
+      level: 1,
+    },
   },
   {
-    path: '/todo',
-    name: 'todo',
+    path: "/todo",
+    name: "todo",
     component: TodoPage,
-    meta: { requiresAuth: true },
+    meta: {
+      requiresAuth: true,
+      level: 1,
+    },
   },
   {
-    path: '/auth',
-    name: 'Auth',
+    path: "/auth",
+    name: "Auth",
     component: AuthPage,
+    meta: {
+      level: 1,
+    },
   },
 ];
 
@@ -44,11 +59,11 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !auth.checkAuth()) {
-    showToast('ログイン必須ページです。', 'alert');
-    next('/')
+    showToast("ログイン必須ページです。", "alert");
+    next("/");
   } else {
-    next()
+    next();
   }
-})
+});
 
 export default router;

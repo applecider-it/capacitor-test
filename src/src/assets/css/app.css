@@ -34,17 +34,32 @@
   }
 
 }
-.slide-enter-active,
-.slide-leave-active {
+
+/* 進む */
+.slide-forward-enter-active,
+.slide-forward-leave-active {
   transition: all 0.2s ease;
 }
+.slide-forward-enter-from {
+  transform: translateX(30%);
+  opacity: 0;
+}
+.slide-forward-leave-to {
+  transform: translateX(-30%);
+  opacity: 0;
+}
 
-.slide-enter-from {
+/* 戻る */
+.slide-back-enter-active,
+.slide-back-leave-active {
+  transition: all 0.2s ease;
+}
+.slide-back-enter-from {
+  transform: translateX(-30%);
+  opacity: 0;
+}
+.slide-back-leave-to {
   transform: translateX(30%);
   opacity: 0;
 }
 
-.slide-leave-to {
-  transform: translateX(-30%);
-  opacity: 0;
-}
