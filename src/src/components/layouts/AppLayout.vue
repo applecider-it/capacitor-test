@@ -16,11 +16,13 @@ const back = () => {
 
 <template>
   <div>
-    <div class="p-5 pt-10 bg-gray-50">
+    <div class="p-5 pt-16 bg-gray-50">
       <div class="flex items-center justify-between">
-        <span :onclick="back" class="app-btn-secondary">←</span>
-        <span class="text-xl">{{ name }}</span>
-        <span></span>
+        <span class="w-[70px]">
+          <span :onclick="back" class="app-btn-secondary">←</span>
+        </span>
+        <span class="text-2xl font-bold overflow-hidden">{{ name }}</span>
+        <span class="w-[70px]"></span>
       </div>
     </div>
     <div>
