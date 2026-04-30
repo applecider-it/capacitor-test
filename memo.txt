@@ -1,5 +1,5 @@
 
-cd ~/workspace/github/ionic-test/src
+cd ~/workspace/github/capacitor-test/src
 
 -----------------------------------
 
@@ -14,7 +14,7 @@ node: 3000
 nvm use 22
   または、これ以上
 
-cd ~/workspace/github/ionic-test/src
+cd ~/workspace/github/capacitor-test/src
 
 npm run dev
 
@@ -27,9 +27,23 @@ http://localhost:5173
 更新反映
 
 
-cd ~/workspace/github/ionic-test/src
+cd ~/workspace/github/capacitor-test/src
 
 npm run build && npx cap sync
+
+
+
+ライブリロード
+
+cd ~/workspace/github/capacitor-test/src
+
+npx cap run --live-reload --port 5173
+
+
+ログを見る方法、
+chromeのurlに
+chrome://inspect
+対象のデバイスのinspectをクリック
 
 
 -----------------------------------
@@ -159,4 +173,20 @@ ios/App/App/Info.plist
 <string>写真ライブラリにアクセスするために必要です</string>
 
 この設定があっても、エミュレーターでは動かない
+
+
+-----------------------------------
+
+Android
+
+
+エミュレーター一覧
+
+~/Library/Android/sdk/emulator/emulator -list-avds
+
+エミュレーターだけ起動
+
+~/Library/Android/sdk/emulator/emulator -avd Pixel_9
+
+
 

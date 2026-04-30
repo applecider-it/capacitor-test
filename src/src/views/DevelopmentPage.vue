@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 import AppLayout from '@/components/layouts/AppLayout.vue'
+
+onMounted(() => {
+  console.log('onMounted')
+})
 </script>
 
 <template>
