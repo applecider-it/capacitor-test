@@ -39,6 +39,9 @@ cd ~/workspace/github/capacitor-test/src
 
 npx cap run --live-reload --port 5173
 
+npm run dev
+も起動しておく必要がある
+
 
 ログを見る方法、
 chromeのurlに
