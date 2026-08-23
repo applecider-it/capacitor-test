@@ -15,11 +15,12 @@ const back = () => {
 </script>
 
 <template>
-  <div>
-    <div class="p-5 bg-gray-50 mt-[env(safe-area-inset-top)]">
+  <div class="mt-[env(safe-area-inset-top)] mb-[env(safe-area-inset-bottom)] 
+    h-[calc(100dvh-env(safe-area-inset-top)-env(safe-area-inset-bottom))] overflow-y-auto">
+    <div class="p-5 bg-gray-50">
       <div class="flex items-center justify-between">
         <span class="w-[70px]">
-          <span :onclick="back" class="app-btn-secondary">←</span>
+          <span @click="back" class="app-btn-secondary">←</span>
         </span>
         <span class="text-2xl font-bold overflow-hidden">{{ name }}</span>
         <span class="w-[70px]"></span>
