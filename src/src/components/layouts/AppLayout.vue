@@ -17,6 +17,7 @@ const back = () => {
 <template>
   <div class="mt-[env(safe-area-inset-top)] mb-[env(safe-area-inset-bottom)] 
     h-[calc(100dvh-env(safe-area-inset-top)-env(safe-area-inset-bottom))] overflow-y-auto">
+
     <div class="p-5 bg-gray-50">
       <div class="flex items-center justify-between">
         <span class="w-[70px]">
@@ -26,10 +27,10 @@ const back = () => {
         <span class="w-[70px]"></span>
       </div>
     </div>
-    <div>
-      <div class="p-5">
-        <slot />
-      </div>
+
+    <div class="p-5">
+      <slot />
     </div>
+
   </div>
 </template>

@@ -14,10 +14,14 @@ onMounted(() => {
       <div>アセット動作確認</div>
       <img src="../assets/images/Block.png" class="w-[50px]" />
     </div>
-    <ul>
-      <li v-for="n in 50" :key="n">
-        番号: {{ n }}
-      </li>
-    </ul>
+
+    <div class="mt-5">
+      <div>スクロール動作確認用</div>
+      <ul class="bg-blue-50">
+        <li v-for="n in 50" :key="n">
+          {{ n }}
+        </li>
+      </ul>
+    </div>
   </AppLayout>
 </template>
