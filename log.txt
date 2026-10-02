@@ -1,0 +1,31 @@
+
+npm install -g @ionic/cli
+
+ionic start myApp blank --type vue
+
+nvm -v
+
+nvm install 22
+
+nvm use 22
+
+npx cap init
+
+npm install @capacitor/android
+
+npx cap sync
+
+npm install @capacitor/camera
+npx cap sync
+
+npm install -D tailwindcss@^3.4.18 postcss autoprefixer
+
+npx tailwindcss init -p
+
+npm install @capacitor/ios@8.2.0
+
+npm install @capacitor/preferences
+
+npm uninstall @ionic/vue
+npm uninstall @ionic/vue-router
+npm uninstall ionicons

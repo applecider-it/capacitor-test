@@ -1,0 +1,195 @@
+
+cd ~/workspace/github/capacitor-test/src
+
+-----------------------------------
+
+port
+
+vue: 5173
+Web動作確認: 5174
+node: 3000
+
+-----------------------------------
+
+nvm use 22
+  または、これ以上
+
+cd ~/workspace/github/capacitor-test/src
+
+npm run dev
+
+
+
+
+http://localhost:5173
+
+
+更新反映
+
+
+cd ~/workspace/github/capacitor-test/src
+
+npm run build && npx cap sync
+
+
+
+ライブリロード
+
+cd ~/workspace/github/capacitor-test/src
+
+npx cap run --live-reload --port 5173
+
+npm run dev
+も起動しておく必要がある
+
+
+ログを見る方法、
+chromeのurlに
+chrome://inspect
+対象のデバイスのinspectをクリック
+
+
+-----------------------------------
+
+node
+
+cd ~/workspace/github/flutter-test/node
+
+npx tsx watch ./app/entrypoints/server.js
+
+
+-----------------------------------
+
+セットアップ
+
+npm ci
+
+
+-----------------------------------
+
+ビルド
+
+
+Web
+
+npm run build
+
+serve ./dist -l 5174
+
+http://localhost:5174
+
+
+----
+
+Android
+
+wslからは動かない
+winネイティブは一応動くけど遅い
+macは普通に動く
+
+--
+
+winだけ必要
+
+プロジェクトをwslだけじゃなくWindowsネイティブにも用意する
+
+windowsネイティブなので、すべてが遅いので注意
+
+ブラウザまでの確認はwslが無難
+
+--
+
+nvm use 22
+  または、22以上
+
+必要なら
+  npm ci
+
+npm run build
+
+npx cap add android
+  初回だけ
+
+npx cap sync
+
+npx cap open android
+  Android Stadioが開いた後は不要
+
+
+--
+
+更新反映
+
+npm run build && npx cap sync
+
+エミュレーター更新
+  初期画面に戻ってしまう
+
+--
+
+時々、Run / Debug Configurations のmodulesが空になることがあるので、その時は、android.appを選択
+
+----
+
+iOS
+
+npx cap add ios
+  初回だけ
+
+npm run build
+
+npx cap sync ios
+
+
+npx cap open ios
+  xcodeが開いた後は不要
+
+--
+
+更新反映
+
+npm run build && npx cap sync ios
+
+
+
+-----------------------------------
+
+カメラを使う時
+
+
+Android
+
+android/app/src/main/AndroidManifest.xml
+
+<uses-permission android:name="android.permission.CAMERA" />
+
+
+iOS
+
+ios/App/App/Info.plist
+
+<key>NSCameraUsageDescription</key>
+<string>カメラを使用します</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>写真を保存するために使用します</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>写真ライブラリにアクセスするために必要です</string>
+
+この設定があっても、エミュレーターでは動かない
+
+
+-----------------------------------
+
+Android
+
+
+エミュレーター一覧
+
+~/Library/Android/sdk/emulator/emulator -list-avds
+
+エミュレーターだけ起動
+
+~/Library/Android/sdk/emulator/emulator -avd Pixel_9
+
+
+
