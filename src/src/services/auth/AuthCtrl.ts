@@ -14,6 +14,8 @@ export default class AuthCtrl {
 
   /** 認証のセットアップ */
   async setupAuth() {
+    console.log('setupAuth');
+
     const { value } = await Preferences.get({ key: "token" });
 
     console.log("token", value);
@@ -42,14 +44,23 @@ export default class AuthCtrl {
         headers: headers,
       });
 
+      console.log('response', response);
+      console.log('response.data', response.data);
+
       const token = response.data.token;
+
+      console.log('token', token);
 
       this.currentToken.value = token;
       await Preferences.set({ key: "token", value: token });
 
       console.log(this.currentToken.value);
     } catch (error: any) {
-      console.log("error", error);
+      // Axiosのエラー詳細を出力
+      console.log("error message:", error.message);
+      console.log("error code:", error.code); // ERR_NETWORK や ECONNREFUSED などが出ます
+      console.log("error config url:", error.config?.url);
+
       response = error.response;
       console.log("response", response);
       if (!response) return 500;

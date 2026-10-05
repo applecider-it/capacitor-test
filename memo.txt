@@ -195,4 +195,11 @@ Android
 
 WebView実装
 
+上記、「ビルド」起動
+
 cd ~/workspace/github/capacitor-test/webview
+
+npx cap sync ios
+
+npx cap open ios
+

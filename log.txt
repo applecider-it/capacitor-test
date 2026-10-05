@@ -46,3 +46,5 @@ npm install @capacitor/ios @capacitor/android
 npx cap add ios
 npx cap add android
 
+npm install @capacitor/preferences
+
