@@ -47,4 +47,5 @@ npx cap add ios
 npx cap add android
 
 npm install @capacitor/preferences
+npm install @capacitor/camera
 

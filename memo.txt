@@ -195,11 +195,23 @@ Android
 
 WebView実装
 
-上記、「ビルド」起動
+上記、npm run devか「ビルド」起動
 
 cd ~/workspace/github/capacitor-test/webview
 
-npx cap sync ios
+npx cap sync
 
-npx cap open ios
+npx cap open
 
+capacitor.config.jsonの
+server.urlを
+
+android
+http://10.0.2.2:5173
+
+ios
+http://localhost:5173
+
+ビルドの場合は、
+
+5174
