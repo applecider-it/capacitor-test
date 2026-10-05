@@ -203,15 +203,5 @@ npx cap sync
 
 npx cap open
 
-capacitor.config.jsonの
-server.urlを
-
-android
-http://10.0.2.2:5173
-
-ios
-http://localhost:5173
-
-ビルドの場合は、
-
-5174
+capacitor.config.tsの
+server.urlを変更
