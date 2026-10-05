@@ -191,5 +191,8 @@ Android
 
 ~/Library/Android/sdk/emulator/emulator -avd Pixel_9
 
+-----------------------------------
 
+WebView実装
 
+cd ~/workspace/github/capacitor-test/webview

@@ -29,3 +29,20 @@ npm install @capacitor/preferences
 npm uninstall @ionic/vue
 npm uninstall @ionic/vue-router
 npm uninstall ionicons
+
+-----------------------------------
+
+npm install -g serve
+
+# CapacitorコアとCLIのインストール
+npm install @capacitor/core
+npm install -D @capacitor/cli
+
+# 初期化（アプリ名とApp IDを指定）
+npx cap init "My App" "com.example.myapp" --web-dir "public"
+
+# iOS / Android プラットフォームの追加
+npm install @capacitor/ios @capacitor/android
+npx cap add ios
+npx cap add android
+
