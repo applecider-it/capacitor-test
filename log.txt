@@ -49,3 +49,6 @@ npx cap add android
 npm install @capacitor/preferences
 npm install @capacitor/camera
 
+npm i --save-dev @types/node
+
+npm install -D typescript
