@@ -8,8 +8,8 @@ let url = "https://example.com";
 if (!isProd) {
   // 開発環境
 
-  //url = "http://10.0.2.2"; // Android
-  url = "http://localhost";  // iOS
+  url = "http://10.0.2.2"; // Android
+  //url = "http://localhost";  // iOS
 
   //url += ":5173"; // npm run dev
   url += ":5174"; // npm run build
@@ -27,6 +27,7 @@ const config: CapacitorConfig = {
   server: {
     url: url,
     cleartext: true,
+    errorPath: "error.html",
     allowNavigation: ["http://127.0.0.1:3000", "http://10.0.2.2:3000"],
   },
 };
