@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { execAuth } from "@/services/auth/auth.js";
+import { packResponse } from "@/services/api/rest";
 
 /** ログイン処理 */
 const login = (req: Request, res: Response) => {
@@ -16,9 +17,11 @@ const login = (req: Request, res: Response) => {
 
     console.log({ token });
 
-    return res.json({
-      token: token,
-    });
+    return res.json(
+      packResponse({
+        token: token,
+      }),
+    );
   } else {
     // 認証失敗の場合
 

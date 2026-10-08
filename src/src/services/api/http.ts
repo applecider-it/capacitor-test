@@ -4,6 +4,8 @@ import axios from "axios";
 
 import { showToast } from "@/services/ui/message";
 
+import { CLIENT_VERSION } from "@/config/config";
+
 /**
  * APIのhttp関連
  */
@@ -44,6 +46,8 @@ export async function sendApi(uri: string, data: any) {
     data: {},
   };
 
+  let needUpdate = false;
+
   try {
     const response = await axios.post(url, data, {
       headers: headers,
@@ -52,8 +56,12 @@ export async function sendApi(uri: string, data: any) {
     console.log("response", response);
     console.log("response.data", response.data);
 
-    result.status = 200;
-    result.data = response.data;
+    if (response.data.version !== CLIENT_VERSION) {
+      needUpdate = true;
+    } else {
+      result.status = 200;
+      result.data = response.data.data;
+    }
   } catch (error: any) {
     // Axiosのエラー詳細を出力
     console.log("error message:", error.message);
@@ -69,6 +77,11 @@ export async function sendApi(uri: string, data: any) {
     if (result.status !== 401) {
       showToast("通信エラー");
     }
+  }
+
+  if (needUpdate) {
+    showToast("アプリの更新のため、アプリの再起動が必要です。");
+    throw new Error("バージョン不一致");
   }
 
   return result;
