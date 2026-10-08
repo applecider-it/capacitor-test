@@ -53,7 +53,7 @@ chrome://inspect
 
 node
 
-cd ~/workspace/github/flutter-test/node
+cd ~/workspace/github/capacitor-test/node
 
 npx tsx watch ./app/entrypoints/server.js
 
