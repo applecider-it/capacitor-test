@@ -2,8 +2,6 @@ import { ref, Ref } from "vue";
 
 import { sendApi } from "@/services/api/http";
 
-import axios from "axios";
-
 import { Preferences } from "@capacitor/preferences";
 
 /**
@@ -33,29 +31,20 @@ export default class AuthCtrl {
     const data: any = { email, password };
     console.log(data);
 
-    try {
-      const ret = await sendApi("/login", data);
+    const ret = await sendApi("/login", data);
 
-      const token = ret.token;
+    if (ret.status === 200) {
+      const token = ret.data.token;
 
       console.log("token", token);
 
       this.currentToken.value = token;
       await Preferences.set({ key: "token", value: token });
 
-      console.log('currentToken', this.currentToken.value);
-
-      return 200;
-    } catch (error: any) {
-      const response = error.response;
-      console.log("response", response);
-
-      if (!response) return 500;
-
-      console.log("response.data", response!.data);
-
-      return response.status;
+      console.log("currentToken", this.currentToken.value);
     }
+
+    return ret.status;
   }
 
   /** ログアウト */
