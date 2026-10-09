@@ -11,8 +11,8 @@ if (!isProd) {
   url = "http://10.0.2.2"; // Android
   //url = "http://localhost";  // iOS
 
-  //url += ":5173"; // npm run dev
-  url += ":5174"; // npm run build
+  url += ":5173"; // npm run dev
+  //url += ":5174"; // npm run build
 }
 
 console.log({isProd, url})
