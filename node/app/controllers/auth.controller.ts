@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
 
 import { execAuth } from "@/services/auth/auth.js";
-import { packResponse } from "@/services/api/rest";
 
 /** ログイン処理 */
 const login = (req: Request, res: Response) => {
   const { email, password } = req.body;
-  const userAgent = req.headers["user-agent"];
 
-  console.log("login", { email, password }, "userAgent", userAgent);
+  console.log("login", { email, password });
 
   const token = execAuth(email, password);
 
@@ -17,11 +15,9 @@ const login = (req: Request, res: Response) => {
 
     console.log({ token });
 
-    return res.json(
-      packResponse({
-        token: token,
-      }),
-    );
+    return res.json({
+      token: token,
+    });
   } else {
     // 認証失敗の場合
 

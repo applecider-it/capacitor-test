@@ -1,5 +1,5 @@
 import { Capacitor } from "@capacitor/core";
-import { type Router } from 'vue-router';
+import { type Router } from "vue-router";
 
 import axios from "axios";
 
@@ -31,7 +31,11 @@ function apiUrl(uri: string) {
   return url;
 }
 
-/** API送信 */
+/**
+ * API送信
+ *
+ * サーバーとのバージョンの不一致があったら、ページ遷移して、例外を出して止める。
+ */
 export async function sendApi(uri: string, data: any, router: Router) {
   const headers = jsonRequestHeaders();
 
@@ -50,19 +54,19 @@ export async function sendApi(uri: string, data: any, router: Router) {
   let needUpdate = false;
 
   try {
-    const response = await axios.post(url, data, {
-      headers: headers,
-    });
+    const response = await axios.post(
+      url,
+      { data, version: CLIENT_VERSION },
+      {
+        headers: headers,
+      },
+    );
 
     console.log("response", response);
     console.log("response.data", response.data);
 
-    if (response.data.version !== CLIENT_VERSION) {
-      needUpdate = true;
-    } else {
-      result.status = 200;
-      result.data = response.data.data;
-    }
+    result.status = 200;
+    result.data = response.data;
   } catch (error: any) {
     // Axiosのエラー詳細を出力
     console.log("error message:", error.message);
@@ -74,15 +78,18 @@ export async function sendApi(uri: string, data: any, router: Router) {
 
     result.status = response ? response.status : 500;
 
-    // ログインエラー以外は、通信エラー
-    if (result.status !== 401) {
+    // ログインエラー(401), APIバージョンエラー(406)以外は、通信エラー
+    if (![401, 406].includes(result.status)) {
       showToast("通信エラー");
     }
+
+    // APIバージョンエラー(406)のときは、アップデートを促す
+    if (result.status === 406) needUpdate = true;
   }
 
   if (needUpdate) {
     showToast("アプリの更新のため、アプリの再起動が必要です。");
-    await router.replace({ path: '/stop', query: { type: 'needUpdate' } });
+    await router.replace({ path: "/stop", query: { type: "needUpdate" } });
     throw new Error("バージョン不一致");
   }
 

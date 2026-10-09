@@ -19,6 +19,6 @@ export default defineConfig({
   },
   server: {
     host: true,
-    hmr: false, // ホットリロードが動くと確認しづらくなる部分があるので止める
+    //hmr: false, // ホットリロードが動くと確認しづらくなる部分があるので止める
   },
 });
