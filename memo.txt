@@ -62,6 +62,14 @@ npx tsx watch ./app/entrypoints/server.js
 
 セットアップ
 
+
+cd ~/workspace/github/capacitor-test/src
+
+npm ci
+
+
+cd ~/workspace/github/capacitor-test/node
+
 npm ci
 
 
