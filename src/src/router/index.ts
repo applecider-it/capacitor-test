@@ -6,6 +6,7 @@ import TodoPage from "@/views/TodoPage.vue";
 import DevelopmentPage from "@/views/DevelopmentPage.vue";
 import AuthPage from "@/views/AuthPage.vue";
 import CameraPage from "@/views/CameraPage.vue";
+import StopPage from "@/views/StopPage.vue";
 
 import { auth } from "@/services/auth/auth";
 import { showToast } from "@/services/ui/message";
@@ -57,6 +58,14 @@ const routes: Array<RouteRecordRaw> = [
     component: CameraPage,
     meta: {
       level: 1,
+    },
+  },
+  {
+    path: "/stop",
+    name: "Stop",
+    component: StopPage,
+    meta: {
+      level: 0,
     },
   },
 ];

@@ -1,4 +1,5 @@
 import { Capacitor } from "@capacitor/core";
+import { type Router } from 'vue-router';
 
 import axios from "axios";
 
@@ -31,7 +32,7 @@ function apiUrl(uri: string) {
 }
 
 /** API送信 */
-export async function sendApi(uri: string, data: any) {
+export async function sendApi(uri: string, data: any, router: Router) {
   const headers = jsonRequestHeaders();
 
   console.log({ uri, data });
@@ -81,6 +82,7 @@ export async function sendApi(uri: string, data: any) {
 
   if (needUpdate) {
     showToast("アプリの更新のため、アプリの再起動が必要です。");
+    await router.replace({ path: '/stop', query: { type: 'needUpdate' } });
     throw new Error("バージョン不一致");
   }
 

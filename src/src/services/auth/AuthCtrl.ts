@@ -3,6 +3,7 @@ import { ref, Ref } from "vue";
 import { sendApi } from "@/services/api/http";
 
 import { Preferences } from "@capacitor/preferences";
+import { type Router } from 'vue-router';
 
 /**
  * 認証管理
@@ -27,11 +28,11 @@ export default class AuthCtrl {
   }
 
   /** ログイン */
-  async login(email: string, password: string) {
+  async login(email: string, password: string, router: Router) {
     const data: any = { email, password };
     console.log(data);
 
-    const ret = await sendApi("/login", data);
+    const ret = await sendApi("/login", data, router);
 
     if (ret.status === 200) {
       const token = ret.data.token;

@@ -18,7 +18,7 @@ const router = useRouter();
 const login = async () => {
   console.log('login')
 
-  const status = await auth.login(email.value, password.value);
+  const status = await auth.login(email.value, password.value, router);
 
   if (status === 200) {
     showToast('ログインしました');

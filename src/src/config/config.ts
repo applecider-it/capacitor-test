@@ -1,2 +1,2 @@
 /** クライアントのバージョン */
-export const CLIENT_VERSION = 2;
+export const CLIENT_VERSION = 3;
