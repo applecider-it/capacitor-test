@@ -68,6 +68,11 @@ cd ~/workspace/github/capacitor-test/src
 npm ci
 
 
+cd ~/workspace/github/capacitor-test/webview
+
+npm ci
+
+
 cd ~/workspace/github/capacitor-test/node
 
 npm ci

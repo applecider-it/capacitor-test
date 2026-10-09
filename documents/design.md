@@ -1,15 +1,18 @@
 # 設計
 
-## 確認済み機能
+## 構成
+
+```
+node/       ダミーサーバー
+src/        通常のcapacitor
+webview/    WebViewを使ったcapacitor
+```
+
+## 実装内容
 
 - 擬似的なログインの動線
 - カメラ
 - ToDo
-
-## 確認済み環境
-
-- Android Studioでの動作確認
-- Xcodeでの動作確認
 
 ### ツール
 
