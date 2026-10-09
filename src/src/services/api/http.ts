@@ -80,7 +80,7 @@ export async function sendApi(uri: string, data: any, router: Router) {
 
     // ログインエラー(401), APIバージョンエラー(406)以外は、通信エラー
     if (![401, 406].includes(result.status)) {
-      showToast("通信エラー");
+      showToast("通信エラー", 'alert');
     }
 
     // APIバージョンエラー(406)のときは、アップデートを促す
@@ -88,7 +88,7 @@ export async function sendApi(uri: string, data: any, router: Router) {
   }
 
   if (needUpdate) {
-    showToast("アプリの更新のため、アプリの再起動が必要です。");
+    showToast("アプリの更新のため、アプリの再起動が必要です。", 'alert');
     await router.replace({ path: "/stop", query: { type: "needUpdate" } });
     throw new Error("バージョン不一致");
   }

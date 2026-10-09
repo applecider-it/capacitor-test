@@ -25,7 +25,7 @@ const login = async () => {
 
     router.back();
   } else if (status === 401) {
-    showToast('ログイン失敗');
+    showToast('ログイン失敗', 'alert');
   }
 }
 
