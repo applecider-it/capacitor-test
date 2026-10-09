@@ -13,11 +13,21 @@ webview/    WebViewを使ったcapacitor
 - 擬似的なログインの動線
 - カメラ
 - ToDo
+- ノッチなどの外枠対応
+- APIとのバージョンチェック（WebView版のみ有効）
 
-### ツール
+## WebViewを使ったcapacitor
 
-- tailwind3
+Vueの実体部分は、通常のcapacitorの部分を利用している。
 
 ## Nodeのダミーサーバー動作環境
 
+通常のcapacitor、WebViewを使ったcapacitorで共通
+
 - express
+
+## ツール
+
+- vue
+- vue router
+- tailwind3
